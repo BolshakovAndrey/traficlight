@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% load mptt_tags %}
+{% load static %}
 
 {% block title %}Список сотрудников{% endblock %}
 
 {% block content %}
 
     <div>
-        <div>
+        <div class="row mt-5">
             <ul>
                 <h1>Список сотрудников</h1>
                 {% recursetree employee_list %}
