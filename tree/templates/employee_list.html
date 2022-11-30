@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load mptt_tags %}
+
+{% block title %}Список сотрудников{% endblock %}
+
+{% block content %}
+
+    <div>
+        <div>
+            <ul>
+                <h1>Список сотрудников</h1>
+                {% recursetree employee_list %}
+                    <li>
+                    <b>{{ node.name }}:</b> &nbsp;
+                    {{ node.position }}
+                    {{ node.emp_date }}
+                    {{ node.salary }}
+                    {{ node.parent }}
+
+{# Вариант для отображения свернутого дерева! #}
+{#                    {% if not node.is_leaf_node %}#}
+{#                        <ul id="node-{{ node.tree_id}}"#}
+{#                            class="children#}
+{#                            {% if node.level == 0 %}#}
+{#                                top_level#}
+{#                            {% endif %}">#}
+{#                        </ul>#}
+{#                    {% endif %}#}
+
+{# Вариант для отображения развернутого дерева! #}
+
+                        {% if not node.is_leaf_node %}
+                            <ul class="children">
+                                {{ children }}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endrecursetree %}
+                </ul>
+        </div>
+    </div>
+
+{% endblock %}
