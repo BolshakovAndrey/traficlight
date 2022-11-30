@@ -5,9 +5,10 @@ import datetime
 
 class Employee(MPTTModel):
     class MPTTMeta:
-        order_insertion_by = ['name']
+        order_insertion_by = ['structure']
 
-    name = models.CharField(max_length=100, db_index=True)
+    structure = models.CharField(max_length=100, db_index=True)
+    full_name = models.CharField(max_length=100, db_index=True)
     position = models.CharField(max_length=100, db_index=True)
     emp_date = models.DateField()
     salary = models.DecimalField(max_digits=7, decimal_places=0)
@@ -21,9 +22,8 @@ class Employee(MPTTModel):
     )
 
     def __str__(self):
-        return self.name
+        return self.structure
 
     def save(self, *args, **kwargs):
         super(Employee, self).save(*args, **kwargs)
         self.emp_date = datetime.datetime.now()
-

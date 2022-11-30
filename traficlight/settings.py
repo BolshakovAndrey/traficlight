@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'mptt',
     'tree',
     'django_mptt_admin',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
