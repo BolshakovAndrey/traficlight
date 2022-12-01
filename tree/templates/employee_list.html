@@ -10,9 +10,8 @@
         <div class="row mt-5">
             <ul>
                 <h1 class=" row col-md-4 col-md-offset-4">Список сотрудников</h1>
-                    <ul id="treeview">
                     {% recursetree employee_list %}
-                        <li data-icon-cls="fa fa-user" data-expanded="true">{{ node.name }}
+                        <li>
                         {{ node.full_name }}
                         {{ node.position }}
                         {{ node.emp_date }}
@@ -38,7 +37,6 @@
 {#                            {% endif %}#}
                         </li>
                     {% endrecursetree %}
-                    </ul>
                 </ul>
         </div>
     </div>
