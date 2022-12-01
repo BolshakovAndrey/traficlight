@@ -2,7 +2,7 @@
 {% load mptt_tags %}
 {% load static %}
 
-{% block title  %}Список сотрудников{% endblock %}
+{% block title %}Список сотрудников{% endblock %}
 
 {% block content %}
 
@@ -10,17 +10,17 @@
         <div class="row mt-5">
             <ul>
                 <h1 class=" row col-md-4 col-md-offset-4">Список сотрудников</h1>
-                    {% recursetree employee_list %}
-                        <li>
+                {% recursetree employee_list %}
+                    <li>
                         {{ node.full_name }}
                         {{ node.position }}
                         {{ node.emp_date }}
                         {{ node.salary }}
                         {{ node.parent }}
 
-    {# Вариант для отображения свернутого дерева! #}
+                        {# Вариант для отображения свернутого дерева! #}
                         {% if not node.is_leaf_node %}
-                            <ul id="node-{{ node.tree_id}}"
+                            <ul id="node-{{ node.tree_id }}"
                                 class="children
                                 {% if node.level == 0 %}
                                     top_level
@@ -28,16 +28,16 @@
                             </ul>
                         {% endif %}
 
-    {# Вариант для отображения развернутого дерева! #}
+                        {# Вариант для отображения развернутого дерева! #}
 
-{#                            {% if not node.is_leaf_node %}#}
-{#                                <ul class="children">#}
-{#                                    {{ children }}#}
-{#                                </ul>#}
-{#                            {% endif %}#}
-                        </li>
-                    {% endrecursetree %}
-                </ul>
+                        {#                            {% if not node.is_leaf_node %}#}
+                        {#                                <ul class="children">#}
+                        {#                                    {{ children }}#}
+                        {#                                </ul>#}
+                        {#                            {% endif %}#}
+                    </li>
+                {% endrecursetree %}
+            </ul>
         </div>
     </div>
 
