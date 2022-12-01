@@ -29,4 +29,4 @@ Django, Python, SQLite
 login: `admin`
 password: `admin`
 
-Заполнение базы реализовано из скрипта
+
