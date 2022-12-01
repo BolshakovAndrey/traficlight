@@ -9,34 +9,36 @@
     <div>
         <div class="row mt-5">
             <ul>
-                <h1 class=" row justify-content-md-start">Список сотрудников</h1>
-                {% recursetree employee_list %}
-                    <li>
-                    {{ node.full_name }}
-                    {{ node.position }}
-                    {{ node.emp_date }}
-                    {{ node.salary }}
-                    {{ node.parent }}
+                <h1 class=" row col-md-4 col-md-offset-4">Список сотрудников</h1>
+                    <ul id="treeview">
+                    {% recursetree employee_list %}
+                        <li data-icon-cls="fa fa-user" data-expanded="true">{{ node.name }}
+                        {{ node.full_name }}
+                        {{ node.position }}
+                        {{ node.emp_date }}
+                        {{ node.salary }}
+                        {{ node.parent }}
 
-{# Вариант для отображения свернутого дерева! #}
-                    {% if not node.is_leaf_node %}
-                        <ul id="node-{{ node.tree_id}}"
-                            class="children
-                            {% if node.level == 0 %}
-                                top_level
-                            {% endif %}">
-                        </ul>
-                    {% endif %}
+    {# Вариант для отображения свернутого дерева! #}
+                        {% if not node.is_leaf_node %}
+                            <ul id="node-{{ node.tree_id}}"
+                                class="children
+                                {% if node.level == 0 %}
+                                    top_level
+                                {% endif %}">
+                            </ul>
+                        {% endif %}
 
-{# Вариант для отображения развернутого дерева! #}
+    {# Вариант для отображения развернутого дерева! #}
 
-{#                        {% if not node.is_leaf_node %}#}
-{#                            <ul class="children">#}
-{#                                {{ children }}#}
-{#                            </ul>#}
-{#                        {% endif %}#}
-                    </li>
-                {% endrecursetree %}
+{#                            {% if not node.is_leaf_node %}#}
+{#                                <ul class="children">#}
+{#                                    {{ children }}#}
+{#                                </ul>#}
+{#                            {% endif %}#}
+                        </li>
+                    {% endrecursetree %}
+                    </ul>
                 </ul>
         </div>
     </div>

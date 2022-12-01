@@ -6,4 +6,4 @@ from .models import Employee
 
 @admin.register(Employee)
 class EmployeeAdmin(DjangoMpttAdmin):
-    list_display = ('structure', 'full_name', 'position', 'emp_date', 'salary', 'parent')
+    list_display = ('pk', 'structure', 'full_name', 'position', 'emp_date', 'salary', 'parent')
